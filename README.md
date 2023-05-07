@@ -16,7 +16,7 @@ This README file provides a step-by-step guide on how to use OpenAI for fine-tun
 
 ## 1. Set API Key
 
-Input the API key in the environment by running this command in the <terminal> (**key changes according to the *my API key on the OpenAI website***):
+Input the API key in the environment by running this command in the <terminal> (**key changes according to the *my API key* on the OpenAI website**):
 
 ```bash
 export OPENAI_API_KEY="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"
@@ -39,11 +39,12 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 Upload the files (make sure to change the file path):
 
 ```python
-openai.File.create(file=open("/Users/paul/Desktop/Eulith_AI_Agent/annotated_data_prepared_train.jsonl", "rb"), purpose='fine-tune')
+openai.File.create(file=open("<PUT/FILE/PATH/HERE>", "rb"), purpose='fine-tune')
 ```
 
 **Important**: Remember to store the file IDs that are provided in the return:
 
+(format examples)
 - Train Data ID: `"file-38JVhLIEtJX8sznjxAcIBfDc"`
 - Validation Data ID: `"file-xhLWInR04NGsULkPuqjT5j8J"`
 
@@ -52,15 +53,21 @@ openai.File.create(file=open("/Users/paul/Desktop/Eulith_AI_Agent/annotated_data
 Create the fine-tune configuration:
 
 ```python
-openai.FineTune.create(training_file="file-38JVhLIEtJX8sznjxAcIBfDc",
-                       validation_file="file-xhLWInR04NGsULkPuqjT5j8J",
-                       model="curie",
-                       suffix="first_test")
+openai.FineTune.create(training_file="<PUT/TRAINING/FILE/ID/HERE>",
+                       validation_file="<PUT/VALIDATION/FILE/ID/HERE>",
+                       model="<ENTER/MODEL/HERE>",
+                       suffix="<ENTER/CUSTUMIZEMODELNAME/HERE>")
 ```
 Arguments:
 1. *suffix* is going to custumize the name of the model
-2. *model* choose the basemodel which is finetuned
+2. *model* choose the basemodel which is finetuned:
+  - ada
+  - babbage
+  - curie
+  - davinci
+  each model has a different price, information on their performanc : https://learn.microsoft.com/en-us/azure/cognitive-services/openai/concepts/models
 
+![model pricing](/Users/paul/Desktop/Eulith_AI_Agent/appendix/model_pricing.png)
 
 ## 5. Retrieve Fine-Tune and Follow Progress
 
@@ -68,14 +75,15 @@ For both action, use the fine-tune job id.
 Retrieve a the fine-tune:
 
 ```python
-openai.FineTune.retrieve(id="ft-7pwAVKCj8yrBCQEhklsbjPCb")
+openai.FineTune.retrieve(id="<PUT/FINETUNEJOB/ID/HERE>")
 
 ```
 Follow the progress of a fine-tune:
 
 ```python
-openai api fine_tunes.follow -i ft-7pwAVKCj8yrBCQEhklsbjPCb
-```
+openai api fine_tunes.follow -i <PUT/FINETUNEJOB/ID/HERE>
+
+**Important**: We the model is processed, keep its ID somewhere
 
 ## 6. Test the Model
 
@@ -84,7 +92,7 @@ Test the model with your prompt:
 **Important**: Remember to add the prompt-end key and the end of each promt (here we choose '\n\n###\n\n' without space)
 
 ```bash
-openai api completions.create -m curie:ft-personal:first-test-2023-05-05-01-50-58 -p <YOUR_PROMPT>
+openai api completions.create -m <PUT/MODEL/ID/HERE> -p <YOUR_PROMPT>
 ```
 Arguments:
 1. **-M:** to set the maximum number of token generated.
@@ -102,5 +110,5 @@ Arguments:
 - Delete a FineTune:
 
   ```python
-  openai.Model.delete("curie:ft-acmeco-2021-03-03-21-44-20")
+  openai.Model.delete("<PUT/MODEL/ID/HERE>")
   ```
