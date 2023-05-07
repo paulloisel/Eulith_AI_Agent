@@ -82,7 +82,7 @@ Follow the progress of a fine-tune:
 
 ```python
 openai api fine_tunes.follow -i <PUT/FINETUNEJOB/ID/HERE>
-
+```
 **Important**: We the model is processed, keep its ID somewhere
 
 ## 6. Test the Model
