@@ -67,7 +67,7 @@ Arguments:
   - davinci
   each model has a different price, information on their performanc : https://learn.microsoft.com/en-us/azure/cognitive-services/openai/concepts/models
 
-![model pricing](/Users/paul/Desktop/Eulith_AI_Agent/appendix/model_pricing.png)
+![model pricing](appendix/model_pricing.png)
 
 ## 5. Retrieve Fine-Tune and Follow Progress
 
