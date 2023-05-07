@@ -8,3 +8,99 @@ The files:
 2. *formating_inputs* : Notebook taking the *pre_prompts* as an input, it annotates this data and format it to result in the export of a Json file required by the OpenAI API
 
 3. *annotated_data* : export of the annotated data from the notebook. This feed OpenAI model directly 
+
+
+# Fine-Tuning OpenAI Model with Annotated Dataset
+
+This README file provides a step-by-step guide on how to use OpenAI for fine-tuning using an annotated dataset.
+
+## 1. Set API Key
+
+Input the API key in the environment by running this command in the <terminal> (**key changes according to the *my API key on the OpenAI website***):
+
+```bash
+export OPENAI_API_KEY="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"
+```
+
+## 2. Import Modules and Set API Key
+
+Open Python3, import the required modules, and set the API key (*type in the <terminal>*)
+
+```bash
+python3
+import os
+import openai
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
+```
+
+## 3. Upload Files
+
+Upload the files (make sure to change the file path):
+
+```python
+openai.File.create(file=open("/Users/paul/Desktop/Eulith_AI_Agent/annotated_data_prepared_train.jsonl", "rb"), purpose='fine-tune')
+```
+
+**Important**: Remember to store the file IDs that are provided in the return:
+
+- Train Data ID: `"file-38JVhLIEtJX8sznjxAcIBfDc"`
+- Validation Data ID: `"file-xhLWInR04NGsULkPuqjT5j8J"`
+
+## 4. Create Fine-Tune
+
+Create the fine-tune configuration:
+
+```python
+openai.FineTune.create(training_file="file-38JVhLIEtJX8sznjxAcIBfDc",
+                       validation_file="file-xhLWInR04NGsULkPuqjT5j8J",
+                       model="curie",
+                       suffix="first_test")
+```
+Arguments:
+1. *suffix* is going to custumize the name of the model
+2. *model* choose the basemodel which is finetuned
+
+
+## 5. Retrieve Fine-Tune and Follow Progress
+
+For both action, use the fine-tune job id.
+Retrieve a the fine-tune:
+
+```python
+openai.FineTune.retrieve(id="ft-7pwAVKCj8yrBCQEhklsbjPCb")
+
+```
+Follow the progress of a fine-tune:
+
+```python
+openai api fine_tunes.follow -i ft-7pwAVKCj8yrBCQEhklsbjPCb
+```
+
+## 6. Test the Model
+
+Test the model with your prompt:
+
+**Important**: Remember to add the prompt-end key and the end of each promt (here we choose '\n\n###\n\n' without space)
+
+```bash
+openai api completions.create -m curie:ft-personal:first-test-2023-05-05-01-50-58 -p <YOUR_PROMPT>
+```
+Arguments:
+1. **-M:** to set the maximum number of token generated.
+2. **-t:** decimal from 0 to 1 to set how creative is the model compare to the training set. Here we use 0 because we don't want it to be creative.
+3. **--stop:** The stop sequence at which the token generation should stop. We choose ' END'.
+
+## Additional Commands
+
+- Get the list of FineTunes: (also give information about the status of the finetune)
+
+  ```python
+  openai.FineTune.list()
+  ```
+
+- Delete a FineTune:
+
+  ```python
+  openai.Model.delete("curie:ft-acmeco-2021-03-03-21-44-20")
+  ```
