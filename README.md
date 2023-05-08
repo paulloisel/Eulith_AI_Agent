@@ -65,7 +65,7 @@ Arguments:
   - babbage
   - curie
   - davinci
-  each model has a different price, information on their performanc : https://learn.microsoft.com/en-us/azure/cognitive-services/openai/concepts/models
+  each model has a different price, information on their performances : https://learn.microsoft.com/en-us/azure/cognitive-services/openai/concepts/models
 
 ![model pricing](appendix/model_pricing.png)
 
