@@ -2,7 +2,7 @@
 
 The files:
 
-1. *pre_prompts* : excel file where all the generated pre_prompts are in columns A. 
+1. [*pre_prompts*](annotation_sets/pre_prompts_input.xlsx) : excel file where all the generated pre_prompts are in columns A
     Attention: keep track of the operation they are linked to to annotate correctly
 
 2. *formating_inputs* : Notebook taking the *pre_prompts* as an input, it annotates this data and format it to result in the export of a Json file required by the OpenAI API

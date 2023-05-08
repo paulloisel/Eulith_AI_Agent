@@ -1,1 +1,0 @@
-openai api completions.create -m curie:ft-personal:first2-2023-05-07-02-53-45 -p <YOUR_PROMPT>
