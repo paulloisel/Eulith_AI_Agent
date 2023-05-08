@@ -5,16 +5,63 @@ The files:
 1. [*pre_prompts*](annotation_sets/pre_prompts_input.xlsx) : excel file where all the generated pre_prompts are in columns A
     Attention: keep track of the operation they are linked to to annotate correctly
 
-2. *formating_inputs* : Notebook taking the *pre_prompts* as an input, it annotates this data and format it to result in the export of a Json file required by the OpenAI API
+2. [*formating_inputs*](formating_input.ipynb) : Notebook taking the [*pre_prompts*](annotation_sets/pre_prompts_input.xlsx) as an input, it annotates this data and format it to result in the export of a Json file required by the OpenAI API
 
-3. *annotated_data* : export of the annotated data from the notebook. This feed OpenAI model directly 
+3. [*annotated_data*](annotated_data.json) : The output of the export of the annotated data from the notebook. It is used to feed OpenAI tool for data splitting.
 
+4. [*annotated_data_prepared_train*](annotated_data_prepared_train.jsonl) : The 1st output of the OpenAI tool for data splitting. This file is uploaded when creating the Finetune as train_file.
+
+5. [*annotated_data_prepared_valid*](annotated_data_prepared_valid.jsonl) : The 2nd output of the OpenAI tool for data splitting. This file is uploaded when creating the Finetune as validation_file.
+
+# creating the right format annotated data
+
+## 1. Protocol and Parameter choose
+
+- Choose a Eulith protocol you would like to Finetune the language model with. for example "Simple SWAP"
+- Choose the parameters you want to define in your prompts. for example "sell/buy token"
+- Write 10 examples of different Natural Language prompts of different temperature which illustrate exclusively each of the chosen protocols and parameters combinaison.
+- All 10 exemple must associate with the same completion code you write down
+
+## 2. Data augmentation
+
+- Use NLP data augmentation (for exemple chat GPT-4) to generate at least 100 exemples for each of the chosen protocols and parameters combinaison inputting the 10 examples.
+- Store all this data in the column A of an excel
+**Important** keep track of the start and stop line of each protocol and parameter combinaison. You will have to associate it with its completion code.
+
+## 3. Data Cleaning and Formatting
+
+<Cleaning:>
+
+- Create a dictionary where the values are the unique operation (protocol and parameter combinaison) and the keys the completion code associated to it. Each completion should end with the token ' END'
+- Import the excel file as a DataFrame.
+- Edit this DataFrame adding a second columns and filling it with the correct completion (from the dictionary)
+
+<Formatting:>
+
+- use the function *end_tokenization* to add the end key to the prompts
+
+## 4. Exportation as json file
+
+- use json functions to export the DataFrame (with parameter orient='records') and save the json file
 
 # Fine-Tuning OpenAI Model with Annotated Dataset
 
 This README file provides a step-by-step guide on how to use OpenAI for fine-tuning using an annotated dataset.
 
-## 1. Set API Key
+## 1. Use OpenAI tool to check the format and split the data
+
+OpenAI provides a tool to use directly in the terminal to check the format of the annotated_data.json file.
+
+```bash
+openai tools fine_tunes.prepare_data -f "<PATH/TO/annotated_data.json/HERE>"
+```
+
+If everything is good, just run "y" and store the ID of the 2 files (format jsonline) created:
+- annotated_data_prepared_train.jsonl
+- annotated_data_prepared_valid.jsonl
+
+
+## 2. Set API Key
 
 Input the API key in the environment by running this command in the <terminal> (**key changes according to the *my API key* on the OpenAI website**):
 
@@ -22,7 +69,7 @@ Input the API key in the environment by running this command in the <terminal> (
 export OPENAI_API_KEY="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"
 ```
 
-## 2. Import Modules and Set API Key
+## 3. Import Modules and Set API Key
 
 Open Python3, import the required modules, and set the API key (*type in the <terminal>*)
 
@@ -34,12 +81,13 @@ import openai
 openai.api_key = os.getenv("OPENAI_API_KEY")
 ```
 
-## 3. Upload Files
+## 4. Upload Files
 
 Upload the files (make sure to change the file path):
+(this can just double the procedure of 1. but it's in Python and would launch the FineTuning Job)
 
 ```python
-openai.File.create(file=open("<PUT/FILE/PATH/HERE>", "rb"), purpose='fine-tune')
+openai.File.create(file=open("<PUT/FILE/TRAIN_FILE/PATH/OR/ID/HERE>", "rb"), purpose='fine-tune')
 ```
 
 **Important**: Remember to store the file IDs that are provided in the return:
@@ -48,7 +96,7 @@ openai.File.create(file=open("<PUT/FILE/PATH/HERE>", "rb"), purpose='fine-tune')
 - Train Data ID: `"file-38JVhLIEtJX8sznjxAcIBfDc"`
 - Validation Data ID: `"file-xhLWInR04NGsULkPuqjT5j8J"`
 
-## 4. Create Fine-Tune
+## 5. Create Fine-Tune
 
 Create the fine-tune configuration:
 
@@ -69,7 +117,7 @@ Arguments:
 
 ![model pricing](appendix/model_pricing.png)
 
-## 5. Retrieve Fine-Tune and Follow Progress
+## 6. Retrieve Fine-Tune and Follow Progress
 
 For both action, use the fine-tune job id.
 Retrieve a the fine-tune:
@@ -85,7 +133,7 @@ openai api fine_tunes.follow -i <PUT/FINETUNEJOB/ID/HERE>
 ```
 **Important**: We the model is processed, keep its ID somewhere
 
-## 6. Test the Model
+## 7. Test the Model
 
 Test the model with your prompt:
 
