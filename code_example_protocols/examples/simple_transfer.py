@@ -25,7 +25,7 @@ if __name__ == '__main__':
     wallet = LocalSigner("<PRIVATE_KEY>")
     ew3 = EulithWeb3("https://eth-main.eulithrpc.com/v0", "<EULITH_REFRESH_TOKEN>", construct_signing_middleware(wallet))
 
-#4. Define destination wallet and amount
+#3. Define transaction and its amounts
     args = parser.parse_args()
     destination = ''
 
@@ -37,7 +37,7 @@ if __name__ == '__main__':
 
     amount_in_eth = 0.001
 
-#3. Check wallet's founds availability
+#4. Check wallet's funds availability
     if ew3.eth.get_balance(wallet.address) / 10 ** 18 < amount_in_eth + 0.002:  # we don't have enough ETH to complete the tx
         print(f'You have insufficient balance to run this example. Please fund the test wallet with '
               f'at least {amount_in_eth + 0.002} ETH')
@@ -45,7 +45,7 @@ if __name__ == '__main__':
 
     print(f'Sending {amount_in_eth} ETH to: {destination}')
 
-#9. Perform transaction
+#8. Perform transaction
     try:
         tx_hash = ew3.eth.send_transaction({
             'from': wallet.address,

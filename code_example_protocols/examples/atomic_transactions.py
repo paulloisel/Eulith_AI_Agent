@@ -31,10 +31,9 @@ if __name__ == '__main__':
         print(f'insufficient balance, deposit at least {amount + 0.002} ETH to perform operation')
         exit(1)
 
-#5. Call Eulith's toolkit
+#5. Call and check funds availability in Eulith toolkit
     toolkit_address = ew3.v0.ensure_toolkit_contract(wallet.address)
 
-#6. Check toolkit's funds availability, if True, transfer funds to the toolkit
     if weth.balance_of_float(toolkit_address) < amount:
         deposit_tx = weth.deposit_eth(amount, {'from': wallet.address, 'gas': 100000})
         deposit_hash = ew3.eth.send_transaction(deposit_tx)
@@ -47,10 +46,9 @@ if __name__ == '__main__':
         print(f'Sending enough WETH to the toolkit contract to cover the swap: {transfer_hash.hex()}')
         ew3.eth.wait_for_transaction_receipt(transfer_hash)
     
-#7. Open the atomic bundle
+#6. Open the atomic bundle
     ew3.v0.start_atomic_transaction(wallet.address)
 
-#8. Append to the bundle
     try:
         ew3.eth.send_transaction({'from': wallet.address,
                                   'to': t1_wallet_address,
@@ -58,6 +56,8 @@ if __name__ == '__main__':
         ew3.eth.send_transaction({'from': wallet.address,
                                   'to': t2_wallet_address,
                                   'value': hex(int(t2_send_amount * 1e18))})
+
+#7. Close bundle
         atomic_tx = ew3.v0.commit_atomic_transaction()
     except Exception as e:
         print("Error: Failed to execute transactions or commit atomic transaction:", str(e))
@@ -65,7 +65,8 @@ if __name__ == '__main__':
 
     print("Sending atomic transaction as a whole and waiting for receipt...")
 
-#9. Close bundle and perform transaction
+
+#8. perform transaction
     try:
         tx_hash = ew3.eth.send_transaction(atomic_tx)
         receipt = ew3.eth.wait_for_transaction_receipt(tx_hash)
@@ -74,7 +75,7 @@ if __name__ == '__main__':
         print("Error: Transaction not found in the chain after 120 seconds. Try the atomic transaction again.")
         exit(1)
 
-#10. Empty remaining balance
+#9. Empty remaining balance
     withdraw_weth_from_toolkit_tx = weth.transfer_from_float(
         toolkit_address, wallet.address, amount, {'from': wallet.address, 'gas': 100000})
     tx_hash = ew3.eth.send_transaction(withdraw_weth_from_toolkit_tx)

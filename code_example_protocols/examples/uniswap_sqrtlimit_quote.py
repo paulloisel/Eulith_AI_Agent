@@ -18,7 +18,7 @@ if __name__ == '__main__':
     wallet = LocalSigner("<PRIVATE_KEY>")
     ew3 = EulithWeb3("https://eth-main.eulithrpc.com/v0", "<EULITH_REFRESH_TOKEN>", construct_signing_middleware(wallet))
 
-#3. Define transaction's tokens and amount
+#3. Define transaction and its amounts
     weth = ew3.v0.get_erc_token(TokenSymbol.WETH)
     usdc = ew3.v0.get_erc_token(TokenSymbol.USDC)
 
