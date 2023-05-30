@@ -1,5 +1,0 @@
-Importing the necessary modules is the very first step for using Eulith services. The base import is always the same. First, we import Python's standard libraries to interact with the operating system and 
--L1: import os
--L2: import sys
-
-

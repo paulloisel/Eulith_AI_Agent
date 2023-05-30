@@ -56,14 +56,15 @@ if __name__ == '__main__':
         ew3.eth.send_transaction({'from': wallet.address,
                                   'to': t2_wallet_address,
                                   'value': hex(int(t2_send_amount * 1e18))})
-
+    except Exception as e:
+        print("Error: Failed to execute transactions:", str(e))
+        exit(1)
 #7. Close bundle
+    try:
         atomic_tx = ew3.v0.commit_atomic_transaction()
     except Exception as e:
-        print("Error: Failed to execute transactions or commit atomic transaction:", str(e))
+        print("Error: Failed to commit atomic transaction:", str(e))
         exit(1)
-
-    print("Sending atomic transaction as a whole and waiting for receipt...")
 
 
 #8. perform transaction
