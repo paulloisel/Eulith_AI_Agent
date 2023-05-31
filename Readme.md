@@ -6,13 +6,13 @@ The value of this feature lies in its core mission:
 1. More service **for users**
 2. Save time **for teammates** (not answering users' easy questions anymore + using the Assistant to create the code base before providing specific examples to users or debugging users' code)
 
-## Table of Contents
+# Table of Contents
 
-1. [Completion Assistant](#Completion)
-2. [Chat_Completion Assistant](#Chat)
-3. [Questions](#Questions)
+A. [Completion Assistant](#Completion)
+B. [Chat_Completion Assistant](#Chat)
+C. [Questions](#Questions)
 
-## A. Completion Assistant
+# A. Completion Assistant
 
 In this folder you will find the following files:
 
@@ -27,22 +27,22 @@ In this folder you will find the following files:
 
 5. [*annotated_data_prepared_valid*](annotated_data_prepared_valid.jsonl) : The 2nd output of the OpenAI tool for data splitting. This file is uploaded when creating the Finetune as validation_file.
 
-# Guide to create the right format annotated data:
+## Guide to create the right format annotated data:
 
-## 1. Protocol and Parameter choose
+### 1. Protocol and Parameter choose
 
 - Choose a Eulith protocol you would like to Finetune the language model with. for example "Simple SWAP"
 - Choose the parameters you want to define in your prompts. for example "sell/buy token"
 - Write 10 examples of different Natural Language prompts of different temperature which illustrate exclusively each of the chosen protocols and parameters combinaison.
 - All 10 exemple must associate with the same completion code you write down
 
-## 2. Data augmentation
+### 2. Data augmentation
 
 - Use NLP data augmentation (for exemple chat GPT-4) to generate at least 100 exemples for each of the chosen protocols and parameters combinaison inputting the 10 examples.
 - Store all this data in the column A of an excel
 **Important** keep track of the start and stop line of each protocol and parameter combinaison. You will have to associate it with its completion code.
 
-## 3. Data Cleaning and Formatting
+### 3. Data Cleaning and Formatting
 
 <u>Cleaning:</u>
 
@@ -54,13 +54,13 @@ In this folder you will find the following files:
 
 - use the function *end_tokenization* to add the end key to the prompts
 
-## 4. Exportation as json file
+### 4. Exportation as json file
 
 - use json functions to export the DataFrame (with parameter orient='records') and save the json file
 
-# Guide to Fine-Tune OpenAI Model with Annotated Dataset:
+## Guide to Fine-Tune OpenAI Model with Annotated Dataset:
 
-## 1. Use OpenAI tool to check the format and split the data
+### 1. Use OpenAI tool to check the format and split the data
 
 OpenAI provides a tool to use directly in the terminal to check the format of the annotated_data.json file.
 
@@ -73,7 +73,7 @@ If everything is good, just run "y" and store the ID of the 2 files (format json
 - annotated_data_prepared_valid.jsonl
 
 
-## 2. Set API Key
+### 2. Set API Key
 
 Input the API key in the environment by running this command in the <terminal> (**key changes according to the *my API key* on the OpenAI website**):
 
@@ -81,7 +81,7 @@ Input the API key in the environment by running this command in the <terminal> (
 export OPENAI_API_KEY="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"
 ```
 
-## 3. Import Modules and Set API Key
+### 3. Import Modules and Set API Key
 
 Open Python3, import the required modules, and set the API key (*type in the <terminal>*)
 
@@ -93,7 +93,7 @@ import openai
 openai.api_key = os.getenv("OPENAI_API_KEY")
 ```
 
-## 4. Upload Files
+### 4. Upload Files
 
 Upload the files (make sure to change the file path):
 (this can just double the procedure of 1. but it's in Python and would launch the FineTuning Job)
@@ -108,7 +108,7 @@ openai.File.create(file=open("<PUT/FILE/TRAIN_FILE/PATH/OR/ID/HERE>", "rb"), pur
 - Train Data ID: `"file-38JVhLIEtJX8sznjxAcIBfDc"`
 - Validation Data ID: `"file-xhLWInR04NGsULkPuqjT5j8J"`
 
-## 5. Create Fine-Tune
+### 5. Create Fine-Tune
 
 Create the fine-tune configuration:
 
@@ -129,7 +129,7 @@ Arguments:
 
 ![model pricing](appendix/model_pricing.png)
 
-## 6. Retrieve Fine-Tune and Follow Progress
+### 6. Retrieve Fine-Tune and Follow Progress
 
 For both action, use the fine-tune job id.
 Retrieve a the fine-tune:
@@ -145,7 +145,7 @@ openai api fine_tunes.follow -i <PUT/FINETUNEJOB/ID/HERE>
 ```
 **Important**: We the model is processed, keep its ID somewhere
 
-## 7. Test the Model
+### 7. Test the Model
 
 Test the model with your prompt:
 
@@ -173,9 +173,9 @@ Arguments:
   openai.Model.delete("<PUT/MODEL/ID/HERE>")
   ```
 
-## B. Chat_Completion Assistant
+# B. Chat_Completion Assistant
 
-## C. Questions
+# C. Questions
 
 
 
