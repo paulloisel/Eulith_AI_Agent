@@ -8,9 +8,9 @@ The value of this feature lies in its core mission:
 
 # Table of Contents
 
-- A. [Completion Assistant](#Completion)
-- B. [Chat_Completion Assistant](#Chat)
-- C. [Questions](#Questions)
+- A. [Completion Assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#a-completion-assistant)
+- B. [Chat Completion Assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#b-chat_completion-assistant)
+- C. [Questions](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#c-questions)
 
 # A. Completion Assistant
 
@@ -44,13 +44,13 @@ In this folder you will find the following files:
 
 ### 3. Data Cleaning and Formatting
 
-<u>Cleaning:</u>
+*Cleaning:*
 
-- Create a dictionary where the values are the unique operation (protocol and parameter combinaison) and the keys the completion code associated to it. Each completion should end with the token ' END'
+- Create a dictionary where the values are the unique operation (protocol and parameter combinaison) and the keys the completion code associated to it. Each completion should end with the token ' END'.
 - Import the excel file as a DataFrame.
 - Edit this DataFrame adding a second columns and filling it with the correct completion (from the dictionary)
 
-<u>Formatting:</u>
+*Formatting:*
 
 - use the function *end_tokenization* to add the end key to the prompts
 
