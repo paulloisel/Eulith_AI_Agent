@@ -67,7 +67,7 @@ if __name__ == '__main__':
         exit(1)
 
 
-#8. perform transaction
+#8. Perform transaction
     try:
         tx_hash = ew3.eth.send_transaction(atomic_tx)
         receipt = ew3.eth.wait_for_transaction_receipt(tx_hash)
