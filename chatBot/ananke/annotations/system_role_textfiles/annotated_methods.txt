@@ -1,0 +1,107 @@
+Learn the information from the following list of methods. For each method we give information on:
+1. the object or instance on which it should be called
+2. the arguments the method takes
+3. the output of the method
+4. a quick description of what the method does
+
+eulith_get_erc_token() 
+1. Called on the Eulith Web3 object (conventional variable name "ew3")
+2. Takes 1 argument: TokenSymbol (available TokenSymbol is here: https://docs.eulith.com/v/hgbRx2t48xMLL5xhyh04/client-libraries/python/tokens). 
+3. Outputs an instance of EulithERC20 or EulithWETH class, the conventional variable name depend of the requested TokenSymbol. Usually the variable is just a lowercase of the TokenSymbol. However, "weth" is used in all the examples.
+    For example:
+    weth = ew3.eulith_get_erc_token(TokenSymbol.WETH)
+    usdt = ew3.eulith_get_erc_token(TokenSymbol.USDT)
+    usdc = ew3.eulith_get_erc_token(TokenSymbol.USDC)
+4. We need this type of instance because the DEXs recognize only ERC-20 tokens.
+
+get_balance() 
+1. Called on the eth class of the Eulith Web3 object (conventional variable name "ew3.eth").
+2. Takes 1 argument: the addresse variable of a LocalSigner object with your wallet signature (conventional variable name "wallet.address").
+3. Outputs the balance of the wallet.
+4. Use this method to check if you have enough funds for the transaction (usually in a if-statement). The declaration of the "eth" class can be found in the main.py file, this class enable the access to EulithWeb3 methods and handle gas prices in ETH.
+
+ensure_toolkit_contract()
+1. Called on the "v0" class of an instance of EulithERC20 or EulithWETH class (conventional variable name "weth.v0").
+2. Takes 1 argument: the addresse variable of a LocalSigner object with your wallet signature (conventional variable name "wallet.address").
+3. Outputs the adress of the toolkit contract on a hexadecimal format (conventional variable name "toolkit_address").
+4. Before outputting the adress, it checks if a toolkit contract already exists for this wallet, if not, it creates a new one. Hexadecimal format is used for blockchain operations because it is easy to encode and decode.
+
+balance_of_float()
+1. Called on the instance of EulithERC20 or EulithWETH class (conventional variable name "weth").
+2. Takes 1 argument: the adress of the toolkit contract on a hexadecimal format (conventional variable name "toolkit_address").
+3. Outputs the balance of the toolkit contract as a float.
+4. Use this method to check if you have enough funds for the transaction (usually in a if-statement). 
+
+deposit_eth()
+1. Called on the instance of EulithERC20 or EulithWETH class (conventional variable name "weth").
+2. Takes 2 argument:
+- first: the amount of eth you want to deposit
+- second: the following plural parameter: {'from': wallet.address, 'gas': (an integer, the amount of gas you are ready to pay)}
+3. Outputs the reference of the transcation to realize (conventional variable name "deposit_tx").
+4.This method prepares the transactions by setting the amount, the sendder wallet and the accepted gas fees.
+
+send_transaction()
+1. Called on the eth class of the Eulith Web3 object (conventional variable name "ew3.eth").
+2. Takes 1 argument: several parameters that can be pre-defined in a reference of the transcation to realize (for example conventional variable name "deposit_tx"), or defined as follow: {'from': wallet.address, 'to': variable to the key of the receiver wallet as a str, 'value': hex(int(t1_send_amount * 1e18))}
+3. Outputs 
+4. The 
+
+X
+1. Called on
+2. Takes 1 argument: 
+3. Outputs 
+4.
+
+X
+1. Called on
+2. Takes 1 argument: 
+3. Outputs 
+4.
+
+X
+1. Called on
+2. Takes 1 argument: 
+3. Outputs 
+4.
+
+X
+1. Called on
+2. Takes 1 argument: 
+3. Outputs 
+4.
+
+X
+1. Called on
+2. Takes 1 argument: 
+3. Outputs 
+4.
+
+X
+1. Called on
+2. Takes 1 argument: 
+3. Outputs 
+4.
+
+X
+1. Called on
+2. Takes 1 argument: 
+3. Outputs 
+4.
+
+X
+1. Called on
+2. Takes 1 argument: 
+3. Outputs 
+4.
+
+X
+1. Called on
+2. Takes 1 argument: 
+3. Outputs 
+4.
+
+X
+1. Called on
+2. Takes 1 argument: 
+3. Outputs 
+4.
