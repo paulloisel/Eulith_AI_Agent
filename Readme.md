@@ -8,9 +8,9 @@ The value of this feature lies in its core mission:
 
 # Table of Contents
 
-A. [Completion Assistant](#Completion)
-B. [Chat_Completion Assistant](#Chat)
-C. [Questions](#Questions)
+- A. [Completion Assistant](#Completion)
+- B. [Chat_Completion Assistant](#Chat)
+- C. [Questions](#Questions)
 
 # A. Completion Assistant
 
