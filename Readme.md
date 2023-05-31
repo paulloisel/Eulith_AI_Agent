@@ -6,11 +6,13 @@ The value of this feature lies in its core mission:
 1. More service **for users**
 2. Save time **for teammates** (not answering users' easy questions anymore + using the Assistant to create the code base before providing specific examples to users or debugging users' code)
 
+
 # Table of Contents
 
 - A. [Completion Assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#a-completion-assistant)
 - B. [Chat Completion Assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#b-chat_completion-assistant)
 - C. [Questions](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#c-questions)
+- The [General Annotation](general_annotations) folder hold unformatted annotation that can be pineplined to Completion or Chat + Completion
 
 # A. Completion Assistant
 
