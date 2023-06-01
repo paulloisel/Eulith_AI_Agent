@@ -1,24 +1,38 @@
 # Eulith_AI_AGENT
 
-This projet introduce a AI-Powered Code Generator and Assistant for DeFi Protocols. The AI agent translates natural language prompts into code for DeFi Protocols powered by Eulith using its packages and modules. This will enable users to quickly generate code and/or get answers about the functionning of Eulith protocols. Thanks to this assistant they can perform the actions they want under the scope of possibilities offered by Eulith without extensive coding experience or exposure to Eulith's library.
+This projet introduce a AI-Powered Code Generator and Assistant for DeFi Protocols. The AI assitant translates natural language prompts into code for DeFi Protocols powered by Eulith using its packages and modules. This will enable users to quickly generate code and/or get answers about the functionning of Eulith protocols. Thanks to this assistant they can perform the actions they want under the scope of possibilities offered by Eulith without extensive coding experience or mastering of Eulith's library.
 
-The value of this feature lies in its core mission:
-1. More service **for users**
-2. Save time **for teammates** (not answering users' easy questions anymore + using the Assistant to create the code base before providing specific examples to users or debugging users' code)
+The value of this feature lies in its core missions:
+1. More service **for users**.
+2. Save time **for teammates** (not answering users' easy questions anymore + using the Assistant to create the code base before providing specific examples to users or debugging users' code).
 
 
 # Table of Contents
 
-- A. [Completion Assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#a-completion-assistant)
-- B. [Chat Completion Assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#b-chat_completion-assistant)
-- C. [Questions](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#c-questions)
+- A. [Completion Assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#a-completion-assistant) :space_invader:
+- B. [Chat Completion Assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#b-chat_completion-assistant) :robot:
+- C. [Questions](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#c-questions) :question:
 - The [General Annotation](general_annotations) folder holds unformatted annotations that can be Pipelined to Completion or Chat + Completion
 
-# A. Completion Assistant
+# A. Completion Assistant :space_invader:
 
-In this folder you will find the following files:
+## Motivation
+The completion assistant is a surgeon.
+He is not fun, you won't be able to have a dialogue with him. However, he his the most qualify to give a very precise answer. Indeed, the completion assistant relie son the Fine Tune feature of Open AI API which delivers an incredible power (almost infinite) to train a model that would be able to handle all demands about:
+- code completion
+- question answering
 
-### :file_folder: [completion_annotation_format](completion_Assistant/completion_annotations_format)
+### Qualities:
+- extremely precise
+- offer unlimited training possibilities
+
+### Defaults:
+- only one query and no dialogue
+- requires a [long process of annotation](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#guide-to-create-the-right-format-annotated-data)
+
+## Folder summary:
+
+### :file_folder: [completion_annotations_format](completion_Assistant/completion_annotations_format)
 This folder holds the notebooks to format the data to the OPEN AI API completion requirements (with the inputs/outputs datasets):
 
 1. [*pre_prompts*](annotation_sets/pre_prompts_input.xlsx) : excel file where all the generated pre_prompts are in columns A
@@ -33,7 +47,14 @@ This folder holds the notebooks to format the data to the OPEN AI API completion
 5. [*annotated_data_prepared_valid*](annotated_data_prepared_valid.jsonl) : The 2nd output of the OpenAI tool for data splitting. This file is uploaded when creating the Finetune as validation_file.
 
 ### :file_folder: [completion_assistant_software](completion_Assistant/completion_assistant_software)
-This folder holds the notebooks to format the data to the OPEN AI API completion requirements (with the inputs/outputs datasets):
+This folder holds the files that enable to run an software to use the completion assistant:
+
+1. [*app.js*](completion_assistant/completion_assistant_software/app.js) : Nodejs file, this is the backend where the completions are powered with the Open AI finetuning API relying on the trained model.
+
+2. [*index.html*](completion_assistant/completion_assistant_software/index.html) : HTML file, this is the frontend where the user can interact with the completion assistant
+
+3. [*style.css*](completion_assistant/completion_assistant_software/styles.css) : CSS file, this is the design part of the frontend
+
 
 ## Guide to create the right format annotated data:
 
@@ -181,9 +202,9 @@ Arguments:
   openai.Model.delete("<PUT/MODEL/ID/HERE>")
   ```
 
-# B. Chat_Completion Assistant
+# B. Chat_Completion Assistant :robot:
 
-# C. Questions
+# C. Questions :question:
 
 
 
