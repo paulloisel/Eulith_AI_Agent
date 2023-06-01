@@ -19,7 +19,7 @@ async function getMessage() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            model: 'perso',
+            model: 'gpt-3',
             prompt: inputElement.value,
             temperature: 0.2
         })

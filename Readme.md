@@ -18,9 +18,7 @@ The value of this feature lies in its core missions:
 
 ## Motivation
 The completion assistant is a surgeon.
-He is not fun, you won't be able to have a dialogue with him. However, he his the most qualify to give a very precise answer. Indeed, the completion assistant relie son the Fine Tune feature of Open AI API which delivers an incredible power (almost infinite) to train a model that would be able to handle all demands about:
-- code completion
-- question answering
+He is not fun, you won't be able to have a dialogue with him. However, he his the most qualify to give a very precise answer. Indeed, the completion assistant relie son the Fine Tune feature of Open AI API which delivers an incredible power (almost infinite) to train a model that would be able to handle all demands.
 
 ### Qualities:
 - extremely precise
@@ -58,16 +56,16 @@ This folder holds the files that enable to run an software to use the completion
 
 ## Guide to create the right format annotated data:
 
-### 1. Protocol and Parameter choose
+### 1. Protocol and Parameter selection
 
-- Choose a Eulith protocol you would like to Finetune the language model with. for example "Simple SWAP"
-- Choose the parameters you want to define in your prompts. for example "sell/buy token"
-- Write 10 examples of different Natural Language prompts of different temperature which illustrate exclusively each of the chosen protocols and parameters combinaison.
-- All 10 exemple must associate with the same completion code you write down
+- Select a Eulith protocol you would like to Fine-tune the language model with for example "Simple SWAP".
+- Select the parameters you want to define in your prompts for example the sell/buy tokens with precise TokenSymbols.
+- Write 10 examples Natural Language prompts of different temperature which illustrate exclusively each of the chosen protocols and parameters combinaisons.
+- All 10 examples must associate with the same completion code you write down.
 
 ### 2. Data augmentation
 
-- Use NLP data augmentation (for exemple chat GPT-4) to generate at least 100 exemples for each of the chosen protocols and parameters combinaison inputting the 10 examples.
+- Use NLP data augmentation (for exemple chat GPT-4) to generate at least 100 examples for each of the chosen protocols and parameters combinaisons inputting the 10 examples.
 - Store all this data in the column A of an excel
 **Important** keep track of the start and stop line of each protocol and parameter combinaison. You will have to associate it with its completion code.
 
@@ -75,7 +73,7 @@ This folder holds the files that enable to run an software to use the completion
 
 *Cleaning:*
 
-- Create a dictionary where the values are the unique operation (protocol and parameter combinaison) and the keys the completion code associated to it. Each completion should end with the token ' END'.
+- Create a dictionary where the values are the unique operation (protocol and parameters combinaisons) and the keys the completion code associated to it. Each completion should end with the token ' END'.
 - Import the excel file as a DataFrame.
 - Edit this DataFrame adding a second columns and filling it with the correct completion (from the dictionary)
 
