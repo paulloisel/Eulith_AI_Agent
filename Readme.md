@@ -217,10 +217,11 @@ This folder holds the notebooks to format the data to the OPEN AI API completion
 
 3. [*index.css*](chat_completion_assistant/ananke/src/index.css) : CSS file, this is the design part of the frontend
 
-### :file_folder: chat_completion_assistant_format
+### :file_folder: chat_completion_annotations_format
 This folder holds the files that enable to run an software to use the completion assistant:
 
-1. [*jsonl_transformer_tool*](completion_assistant/completion_annotations_format/jsonl_transformer_tool.ipynb): Notebook taking transforming txt and py files into a unique jsonline string. Also formatting the excel file to reach Open API API requirements
+1. [chat_completion_formating-annotations](chat_completion_assistant/chat_completion_annotations_format/chat_completion_formating-annotations.ipynb) : Notebook formatting a txt file to reach Open AI API requirements for chat_completion by converting in a single jsonline string
+
 
 # C. Questions :question:
 
