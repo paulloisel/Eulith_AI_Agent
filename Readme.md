@@ -66,27 +66,17 @@ This folder holds the files that enable to run an software to use the completion
 - Write 10 examples Natural Language prompts of different temperature which illustrate exclusively each of the chosen protocols and parameters combinaisons.
 - All 10 examples must associate with the same completion code you write down.
 
+** Use the data in :folder: [general annotation](general_annotations) for the completions
+
 ### 2. Data augmentation
 
 - Use NLP data augmentation (for exemple chat GPT-4) to generate at least 100 examples for each of the chosen protocols and parameters combinaisons inputting the 10 examples.
 - Store all this data in the column A of an excel
 **Important** keep track of the start and stop line of each protocol and parameter combinaison. You will have to associate it with its completion code.
 
-### 3. Data Cleaning and Formatting
+### 3. Exportation as json file
 
-*Cleaning:*
-
-- Create a dictionary where the values are the unique operation (protocol and parameters combinaisons) and the keys the completion code associated to it. Each completion should end with the token ' END'.
-- Import the excel file as a DataFrame.
-- Edit this DataFrame adding a second columns and filling it with the correct completion (from the dictionary)
-
-*Formatting:*
-
-- use the function *end_tokenization* to add the end key to the prompts
-
-### 4. Exportation as json file
-
-- use json functions to export the DataFrame (with parameter orient='records') and save the json file
+- use the notebooks to optain a good formatted json file.
 
 ## Guide to Fine-Tune OpenAI Model with Annotated Dataset:
 
