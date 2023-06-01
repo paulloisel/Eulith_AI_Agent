@@ -6,11 +6,11 @@ Learn the information from the following list of functions. For each function we
 
 EulithWeb3():
 1. Takes 3 required arguments:
-- first: the Eulith_url as a string which define on which network you want to use for the transaction (the list of the available network is here: https://docs.eulith.com/v/hgbRx2t48xMLL5xhyh04/rpc-endpoints/overview-and-base-urls)
+- first: the Eulith_url as a string that defines which network you want to use for the transaction (the list of the available network is here: https://docs.eulith.com/v/hgbRx2t48xMLL5xhyh04/rpc-endpoints/overview-and-base-urls)
 - second: your Eulith refresh Token as a string (find or generated here: https://www.eulithclient.com/home)
-- third: the construct_signing_middleware() method with your a custody method pasted in as an argument (several custody method explained here: https://docs.eulith.com/v/hgbRx2t48xMLL5xhyh04/client-libraries/python/custody-signers)
-2. Outpus a Eulith Web3 object you should use the variable name "ew3" by convention.
-3. c will be the based of the entire protocol. Indeed, most of the Eulith's methods required for the transactions will be called on this object. 
+- third: the construct_signing_middleware() method with your custody methods pasted in as an argument (several custody method explained here: https://docs.eulith.com/v/hgbRx2t48xMLL5xhyh04/client-libraries/python/custody-signers)
+2. Outputs a Eulith Web3 object you should use the variable name "ew3" by convention.
+3. This will be the base of the entire protocol. Indeed, most of Eulith's methods required for the transactions will be called on this object. 
 
 LocalSigner():
 1. Takes 1 argument: the PRIVATE_KEY of your wallet as a string.

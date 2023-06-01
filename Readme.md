@@ -33,10 +33,13 @@ He is not fun, you won't be able to have a dialogue with him. However, he his th
 ### :file_folder: [completion_annotations_format](completion_Assistant/completion_annotations_format)
 This folder holds the notebooks to format the data to the OPEN AI API completion requirements (with the inputs/outputs datasets):
 
-1. [*pre_prompts*](annotation_sets/pre_prompts_input.xlsx) : excel file where all the generated pre_prompts are in columns A
-    Attention: keep track of the operation they are linked to to annotate correctly
+1. [*jsonl_transformer_tool*](completion_assistant/completion_annotations_format/jsonl_transformer_tool.ipynb): Notebook taking [*text_to_jsonl*](completion_assistant/completion_annotations_format/text_to_jsonl.txt) as an input to convert it to create a jsonl file with holding a single string of the converted text
+
+1. [*text_to_jsonl*](completion_assistant/completion_annotations_format/text_to_jsonl.txt) : text file where in which you paste a piece a text you want to convert in a unique string of jsonline format
 
 2. [*formating_inputs*](formating_input.ipynb) : Notebook taking the [*pre_prompts*](annotation_sets/pre_prompts_input.xlsx) as an input, it annotates this data and format it to result in the export of a Json file required by the OpenAI API
+
+3. [pre_training](completion_assistant/completion_annotations_format/pre_training.xlsx) : Excel file where the first column is a query in text format and the second is the answer the model is trained on in a jsonl format
 
 3. [*annotated_data*](annotated_data.json) : The output of the export of the annotated data from the notebook. It is used to feed OpenAI tool for data splitting.
 
