@@ -11,7 +11,7 @@ The value of this feature lies in its core missions:
 
 - A. [Completion Assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#a-completion-assistant-space_invader) :space_invader:
 - B. [Chat Completion Assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#b-chat-completion-assistant-robot) :robot:
-- C. [Questions](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#c-questions-question) :question:
+- C. [Appendix](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#c-appendix-question) :question:
 
 # A. Completion Assistant :space_invader:
 
@@ -152,7 +152,7 @@ Arguments:
   - davinci
   each model has a different price, information on their performances : https://learn.microsoft.com/en-us/azure/cognitive-services/openai/concepts/models
 
-![model pricing](model_pricing.png)
+![model pricing](questions/model_pricing.png)
 
 ### 6. Retrieve Fine-Tune and Follow Progress
 
