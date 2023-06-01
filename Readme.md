@@ -13,6 +13,11 @@ Our mission fuels the brilliance of our AI assistant:
 - B. [Chat Completion Assistant: Ananke, your personnal assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#b-chat-completion-assistant-ananke-your-personnal-assistant-robot) :robot:
 - C. [Appendix](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#c-appendix-question) :question:
 
+# Clarification
+
+Completion Assistant from part A use a real FineTuning technique. This means that to update the model or use it with a new API_KEY you have to retrain the model which is sometimes long and is costly.
+Chat Completion Assistant from part B is a 'fake' trainned chatGPT clone. This means that I used hidden conversations with it to make it learn things. Then you don't have to train anything before using it, just replace your API_KEY and go with the flow! This is particularly usefull when you want something quickly and specific.
+ 
 # A. Completion Assistant: The Code Surgeon :space_invader:
 
 ## Motivation
@@ -57,9 +62,10 @@ When it is a success you have to **save the model ID**!
 4. Go to [App](completion_assistant/completion_assistant_software/app.js):
 - l.1 paste your API_KEY
 - l.21 choose the parameters of the completions
-- - provide your model ID (starting with 'davinci:ft-personal:completion ...')
-- - adapt the temperature (-t)
-**Do not change the stop parameter**
+  - provide your model ID (starting with 'davinci:ft-personal:completion ...')
+  - adapt the temperature (-t)
+  - **Do not change the stop parameter**
+  - you can play with other parameters [here](https://platform.openai.com/docs/api-reference/completions)
 
 ## Folder summary:
 
@@ -242,6 +248,7 @@ Unfortunately it is not the same technology than with the finetuning, this means
 
 ## How to use the completion assistant?
 
+### If you already set up your API_KEY
 1. Go to the [ananke/src](chat_completion_assistant/ananke/src) :folder:
 2. Open terminal, rename it backend and run the following
 ```bash
@@ -253,7 +260,18 @@ npm run start:frontend
 ```
 4. Type your queries in the window that is popping on your computer
 
+### If you haven't set up your API_KEY
+1. Go to the [env](chat_completion_assistant/ananke/.env) file and paste your key (without quotes)
 
+### If you want to 'fake train the assistant'
+Here I say fake train because this is not real finetuning, it is way less powerful
+
+1. Go to the [server](chat_completion_assistant/ananke/server.js) file:
+- l.18, you can modify the body:
+  - change the messages that are pre-passed into it. To do so you have to respect the format. You can find a txt/py to Jsonline transformer tool [here](chat_completion_assistant/chat_completion_annotations_format/chat_completion_formating-annotations.ipynb)
+  **ATTENTION:** using a 'user' role by starting the prompt with 'Learn this please' is the most efficient. You can use a 'system' role but I do not guaranty the result if your conversation is long
+  - change the temperature (-t)
+  - you can play with other parameters [here](https://platform.openai.com/docs/api-reference/chat/create)
 ## Folder summary:
 
 ### :file_folder: ananke
