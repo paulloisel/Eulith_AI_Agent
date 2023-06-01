@@ -19,7 +19,7 @@ async function getMessage() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            model: 'gpt-3',
+            model: 'davinci',
             prompt: inputElement.value,
             temperature: 0.2
         })
@@ -28,8 +28,8 @@ async function getMessage() {
         const response = await fetch('https://api.openai.com/v1/completions', options)
         const data = await response.json()
         console.log(data)
-        outPutElement.textContent = data.choices[0].message.content
-        if (data.choices[0].message.content && inputElement.value) {
+        outPutElement.textContent = data.choices[0].text
+        if (data.choices[0].text && inputElement.value) {
             const pElement = document.createElement('p')
             pElement.textContent = inputElement.value
             pElement.addEventListener('click', () => changeInput(pElement.textContent))
