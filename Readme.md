@@ -18,7 +18,7 @@ The value of this feature lies in its core mission:
 
 In this folder you will find the following files:
 
-### [completion_annotation_format](completion_Assistant/completion_annotations_format)
+### :file_folder: [completion_annotation_format](completion_Assistant/completion_annotations_format)
 This folder holds the notebooks to format the data to the OPEN AI API completion requirements (with the inputs/outputs datasets):
 
 1. [*pre_prompts*](annotation_sets/pre_prompts_input.xlsx) : excel file where all the generated pre_prompts are in columns A
@@ -32,7 +32,7 @@ This folder holds the notebooks to format the data to the OPEN AI API completion
 
 5. [*annotated_data_prepared_valid*](annotated_data_prepared_valid.jsonl) : The 2nd output of the OpenAI tool for data splitting. This file is uploaded when creating the Finetune as validation_file.
 
-### [completion_assistant_software](completion_Assistant/completion_assistant_software)
+### :file_folder: [completion_assistant_software](completion_Assistant/completion_assistant_software)
 This folder holds the notebooks to format the data to the OPEN AI API completion requirements (with the inputs/outputs datasets):
 
 ## Guide to create the right format annotated data:
