@@ -147,7 +147,7 @@ Arguments:
   - davinci
   each model has a different price, information on their performances : https://learn.microsoft.com/en-us/azure/cognitive-services/openai/concepts/models
 
-![model pricing](appendix/model_pricing.png)
+![model pricing](model_pricing.png)
 
 ### 6. Retrieve Fine-Tune and Follow Progress
 
@@ -193,6 +193,12 @@ Arguments:
   openai.Model.delete("<PUT/MODEL/ID/HERE>")
   ```
 
+## How to use the completion assistant?
+
+1. Go to the [completion_assistant](completion_assistant/completion_assistant_software) :folder:
+2. Run without debugging
+3. Type your queries in the window that is popping on your computer
+
 # B. Chat_Completion Assistant :robot:
 
 ## Motivation
@@ -206,6 +212,20 @@ Unfortunately it is not the same technology than with the finetuning, this means
 
 ### Defaults:
 - unsuffisant training
+
+## How to use the completion assistant?
+
+1. Go to the [ananke/src](chat_completion_assistant/ananke/src) :folder:
+2. Open terminal, rename it backend and run the following
+```bash
+npm run start:backend
+```
+3. Open terminal, rename it frontend and run the following
+```bash
+npm run start:frontend
+```
+4. Type your queries in the window that is popping on your computer
+
 
 ## Folder summary:
 
