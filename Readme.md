@@ -28,9 +28,38 @@ Picture the Completion Assistant as a code surgeon: not very chatty, but the one
 
 ## How to use the completion assistant?
 
+### If your API-KEY is already set-up
 1. Go to the [completion_assistant](completion_assistant/completion_assistant_software) :folder:
 2. Click on 'Run without debugging'
 3. Let your queries loose in the window that pops up
+
+### If you just download theis file
+1. Copy the absolute path of [completion_annotated_data_prepared_train](completion_assistant/completion_annotations_format/completion_annotated_data_prepared_train.jsonl)
+2. Open your terminal and run the following commands in this order
+```bash
+export OPENAI_API_KEY="<YOUR-API-KEY>"
+python3 
+import os
+import openai
+openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.File.create(file=open("<Absolute/PATH/completion_annotated_data_prepared_train.jsonl>", "rb"), purpose='fine-tune')
+#Save the file-ID provided
+openai.FineTune.create(training_file="<FileID>", model="davinci", suffix="completion_2")
+#Save the Finetune Job ID provided
+```
+3. Escape Python and Check the status of your Finetune Job running the following in the terminal
+```bash
+openai api fine_tunes.follow -i <PUT/FINETUNEJOB/ID/HERE>
+```
+The finetune will be done when 4/4 is reached. You can close the terminal and your computer.
+When it is a success you have to **save the model ID**!
+
+4. Go to [App](completion_assistant/completion_assistant_software/app.js):
+- l.1 paste your API_KEY
+- l.21 choose the parameters of the completions
+- - provide your model ID (starting with 'davinci:ft-personal:completion ...')
+- - adapt the temperature (-t)
+**Do not change the stop parameter**
 
 ## Folder summary:
 
