@@ -10,9 +10,8 @@ The value of this feature lies in its core missions:
 # Table of Contents
 
 - A. [Completion Assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#a-completion-assistant-space_invader) :space_invader:
-- B. [Chat Completion Assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#b-chat_completion-assistant-robot) :robot:
-- C. [Questions](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#c-questions) :question:
-- The [General Annotation](general_annotations) folder holds unformatted annotations that can be Pipelined to Completion or Chat + Completion
+- B. [Chat Completion Assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#b-chat-completion-assistant-robot) :robot:
+- C. [Questions](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#c-questions-question) :question:
 
 # A. Completion Assistant :space_invader:
 
@@ -27,6 +26,12 @@ He is not fun, you won't be able to have a dialogue with him. However, he his th
 ### Defaults:
 - only one query and no dialogue
 - requires a [long process of annotation](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#guide-to-create-the-right-format-annotated-data)
+
+## How to use the completion assistant?
+
+1. Go to the [completion_assistant](completion_assistant/completion_assistant_software) :folder:
+2. Run without debugging
+3. Type your queries in the window that is popping on your computer
 
 ## Folder summary:
 
@@ -193,12 +198,6 @@ Arguments:
   openai.Model.delete("<PUT/MODEL/ID/HERE>")
   ```
 
-## How to use the completion assistant?
-
-1. Go to the [completion_assistant](completion_assistant/completion_assistant_software) :folder:
-2. Run without debugging
-3. Type your queries in the window that is popping on your computer
-
 # B. Chat Completion Assistant :robot:
 
 ## Motivation
@@ -244,11 +243,8 @@ This folder holds the files that enable to run an software to use the completion
 1. [chat_completion_formating-annotations](chat_completion_assistant/chat_completion_annotations_format/chat_completion_formating-annotations.ipynb) : Notebook formatting a txt file to reach Open AI API requirements for chat_completion by converting in a single jsonline string
 
 
-# C. Questions :question:
+# C. Appendix :question:
 
+1. [Git_Book_Needed_Updates](questions/Git_Book_Needed_Updates.pdf) : PDF with comments because while working on Eulith's produit I caught some typos
 
-
-```bash
-git clone https://github.com/yourusername/your-repo.git
-cd your-repo
-npm install
+2. [Questions](questions/Questions.pdf) : PDF with questions and thoughts about the standardization.
