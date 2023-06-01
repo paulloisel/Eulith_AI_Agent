@@ -1,4 +1,4 @@
-const API_KEY = "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"
+const API_KEY = "<API_KEY>"
 const submitButton = document.querySelector('#submit')
 const outPutElement = document.querySelector('#output')
 const inputElement = document.querySelector('input')
@@ -19,7 +19,7 @@ async function getMessage() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            model: 'davinci:ft-personal:completion-2-2023-06-01-17-50-26',
+            model: '<MODEL_ID>',
             prompt: inputElement.value,
             temperature: 0.5,
             stop: " UGKYdT",
