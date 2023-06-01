@@ -9,8 +9,8 @@ The value of this feature lies in its core missions:
 
 # Table of Contents
 
-- A. [Completion Assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#a-completion-assistant) :space_invader:
-- B. [Chat Completion Assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#b-chat_completion-assistant) :robot:
+- A. [Completion Assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#a-completion-assistant-space_invader) :space_invader:
+- B. [Chat Completion Assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#b-chat_completion-assistant-robot) :robot:
 - C. [Questions](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#c-questions) :question:
 - The [General Annotation](general_annotations) folder holds unformatted annotations that can be Pipelined to Completion or Chat + Completion
 
@@ -199,7 +199,7 @@ Arguments:
 2. Run without debugging
 3. Type your queries in the window that is popping on your computer
 
-# B. Chat_Completion Assistant :robot:
+# B. Chat Completion Assistant :robot:
 
 ## Motivation
 The Chat_completion assistant is called Ananke because it is a chatbot. So a name was needed
