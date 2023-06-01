@@ -30,24 +30,24 @@ He is not fun, you won't be able to have a dialogue with him. However, he his th
 
 ## Folder summary:
 
-### :file_folder: [completion_annotations_format](completion_Assistant/completion_annotations_format)
+### :file_folder: completion_annotations_format
 This folder holds the notebooks to format the data to the OPEN AI API completion requirements (with the inputs/outputs datasets):
 
-1. [*jsonl_transformer_tool*](completion_assistant/completion_annotations_format/jsonl_transformer_tool.ipynb): Notebook taking [*text_to_jsonl*](completion_assistant/completion_annotations_format/text_to_jsonl.txt) as an input to convert it to create a jsonl file with holding a single string of the converted text
+1. [*jsonl_transformer_tool*](completion_assistant/completion_annotations_format/jsonl_transformer_tool.ipynb): Notebook taking transforming txt and py files into a unique jsonline string. Also formatting the excel file to reach Open API API requirements
 
-1. [*text_to_jsonl*](completion_assistant/completion_annotations_format/text_to_jsonl.txt) : text file where in which you paste a piece a text you want to convert in a unique string of jsonline format
+2. [*text_to_jsonl*](completion_assistant/completion_annotations_format/text_to_jsonl.txt) : text file where in which you paste a piece a text you want to convert in a unique string of jsonline format
 
-2. [*formating_inputs*](formating_input.ipynb) : Notebook taking the [*pre_prompts*](annotation_sets/pre_prompts_input.xlsx) as an input, it annotates this data and format it to result in the export of a Json file required by the OpenAI API
+3. [*py_to_jsonl*](completion_assistant/completion_annotations_format/py_to_jsonl.py) : python file in which you paste a piece a python code you want to convert in a unique string of jsonline format
 
-3. [pre_training](completion_assistant/completion_annotations_format/pre_training.xlsx) : Excel file where the first column is a query in text format and the second is the answer the model is trained on in a jsonl format
+4. [*pre_training*](completion_assistant/completion_annotations_format/pre_training.xlsx) : Excel file where the first column is a query in text format and the second is the answer the model is trained on in a jsonl format
 
-3. [*annotated_data*](annotated_data.json) : The output of the export of the annotated data from the notebook. It is used to feed OpenAI tool for data splitting.
+5. [*completion_annotated_data*](completion_assistant/completion_annotations_format/completion_annotated_data.json) : Json file, the output of the export of the completion annotated data from the notebook. It is used to feed OpenAI tool for data splitting.
 
-4. [*annotated_data_prepared_train*](annotated_data_prepared_train.jsonl) : The 1st output of the OpenAI tool for data splitting. This file is uploaded when creating the Finetune as train_file.
+6. [*completion_annotated_data_prepared_train*](completion_assistant/completion_annotations_format/completion_annotated_data_prepared_train.jsonl) : The 1st output of the OpenAI tool for data splitting. This file is uploaded when creating the Finetune as train_file.
 
-5. [*annotated_data_prepared_valid*](annotated_data_prepared_valid.jsonl) : The 2nd output of the OpenAI tool for data splitting. This file is uploaded when creating the Finetune as validation_file.
+7. [*completion_annotated_data_prepared_valid*](completion_assistant/completion_annotations_format/completion_annotated_data_prepared_valid.jsonl) : The 2nd output of the OpenAI tool for data splitting. This file is uploaded when creating the Finetune as validation_file.
 
-### :file_folder: [completion_assistant_software](completion_Assistant/completion_assistant_software)
+### :file_folder: completion_assistant_software
 This folder holds the files that enable to run an software to use the completion assistant:
 
 1. [*app.js*](completion_assistant/completion_assistant_software/app.js) : Nodejs file, this is the backend where the completions are powered with the Open AI finetuning API relying on the trained model.
@@ -204,6 +204,23 @@ Arguments:
   ```
 
 # B. Chat_Completion Assistant :robot:
+
+
+## Folder summary:
+
+### :file_folder: ananke
+This folder holds the notebooks to format the data to the OPEN AI API completion requirements (with the inputs/outputs datasets):
+
+1. [*App.js*](chat_completion_assistant/ananke/src/App.js) : Nodejs file, this is the backend where the completions are powered with the Open AI finetuning API relying on the trained model.
+
+2. [*index.js*](chat_completion_assistant/ananke/src/index.js) : HTML file, this is the frontend where the user can interact with the completion assistant
+
+3. [*index.css*](chat_completion_assistant/ananke/src/index.css) : CSS file, this is the design part of the frontend
+
+### :file_folder: chat_completion_assistant_format
+This folder holds the files that enable to run an software to use the completion assistant:
+
+1. [*jsonl_transformer_tool*](completion_assistant/completion_annotations_format/jsonl_transformer_tool.ipynb): Notebook taking transforming txt and py files into a unique jsonline string. Also formatting the excel file to reach Open API API requirements
 
 # C. Questions :question:
 

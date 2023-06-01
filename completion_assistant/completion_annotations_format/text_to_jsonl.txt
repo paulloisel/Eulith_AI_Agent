@@ -1,6 +1,1 @@
-The Step 5,6,7, and 9 are optional (they are used only if the transaction is atomic).
-In the case the transaction is not atomic, then you don't need a toolkit and use only steps 1,2,3,4 and 8.
-
-In a nutshell:
-- if the transaction is atomic all steps from 1 to 9 must be used
-- if the transaction is non-atomic, only steps 1,2,3,4 and 8 are required.
+INPUT THE TEXT YOU WANT TO CONVERT TO JSONLINE STRING HERE
