@@ -1,37 +1,36 @@
-# Eulith_AI_AGENT
+# Eulith_AI_AGENT 🌌🚀
 
-This projet introduce a AI-Powered Code Generator and Assistant for DeFi Protocols. The AI assitant translates natural language prompts into code for DeFi Protocols powered by Eulith using its packages and modules. This will enable users to quickly generate code and/or get answers about the functionning of Eulith protocols. Thanks to this assistant they can perform the actions they want under the scope of possibilities offered by Eulith without extensive coding experience or mastering of Eulith's library.
+Embark on a galactic journey with Eulith_AI_Agent, your AI-powered DeFi Code Generator and Assistant. Forget the mundane intricacies of coding and enjoy the instant code generation for DeFi Protocols powered by Eulith. You are no longer bound by the chains of extensive coding experience or profound mastery of Eulith's library, as this AI assistant seamlessly translates natural language prompts into code. This is where magic meets science!
 
-The value of this feature lies in its core missions:
-1. More service **for users**.
-2. Save time **for teammates** (not answering users' easy questions anymore + using the Assistant to create the code base before providing specific examples to users or debugging users' code).
+Our mission fuels the brilliance of our AI assistant:
 
+1. Empowering **users** with a heightened experience.
+2. Liberating **teammates** from answering rudimentary queries and providing them with the AI assistant's generated code as a base for specific user examples and debugging.
 
 # Table of Contents
 
-- A. [Completion Assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#a-completion-assistant-space_invader) :space_invader:
-- B. [Chat Completion Assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#b-chat-completion-assistant-robot) :robot:
+- A. [Completion Assistant: The Code Surgeon](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#a-completion-assistant-space_invader) :space_invader:
+- B. [Chat Completion Assistant: Ananke, your personnal assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#b-chat-completion-assistant-robot) :robot:
 - C. [Appendix](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#c-appendix-question) :question:
 
-# A. Completion Assistant :space_invader:
+# A. Completion Assistant: The Code Surgeon :space_invader:
 
 ## Motivation
-The completion assistant is a surgeon.
-He is not fun, you won't be able to have a dialogue with him. However, he his the most qualify to give a very precise answer. Indeed, the completion assistant relie son the Fine Tune feature of Open AI API which delivers an incredible power (almost infinite) to train a model that would be able to handle all demands.
+Picture the Completion Assistant as a code surgeon: not very chatty, but the one you can trust for an astoundingly precise diagnosis. Its core strength lies in the Fine-Tune feature of OpenAI API, unleashing a colossal capacity to train a model that can handle an infinite universe of demands.
 
 ### Qualities:
-- extremely precise
-- offer unlimited training possibilities
+- Razor-sharp precision
+- Limitless training possibilities
 
 ### Defaults:
-- only one query and no dialogue
+- Dialogue with it is not possible; single query at a time
 - requires a [long process of annotation](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#guide-to-create-the-right-format-annotated-data)
 
 ## How to use the completion assistant?
 
 1. Go to the [completion_assistant](completion_assistant/completion_assistant_software) :folder:
-2. Run without debugging
-3. Type your queries in the window that is popping on your computer
+2. Click on 'Run without debugging'
+3. Let your queries loose in the window that pops up
 
 ## Folder summary:
 
@@ -198,7 +197,7 @@ Arguments:
   openai.Model.delete("<PUT/MODEL/ID/HERE>")
   ```
 
-# B. Chat Completion Assistant :robot:
+# B. Chat Completion Assistant: Ananke, your personnal assistant :robot:
 
 ## Motivation
 The Chat_completion assistant is called Ananke because it is a chatbot. So a name was needed
