@@ -2,7 +2,7 @@
 
 Embark on a galactic journey with Eulith_AI_Agent, your AI-powered DeFi Code Generator and Assistant. Forget the mundane intricacies of coding and enjoy the instant code generation for DeFi Protocols powered by Eulith. You are no longer bound by the chains of extensive coding experience or profound mastery of Eulith's library, as this AI assistant seamlessly translates natural language prompts into code. This is where magic meets science!
 
-Our mission fuels the brilliance of our AI assistant:
+The mission fuels the brilliance of the AI assistant:
 
 1. Empowering **users** with a heightened experience.
 2. Liberating **teammates** from answering rudimentary queries and providing them with the AI assistant's generated code as a base for specific user examples and debugging.
@@ -16,8 +16,9 @@ Our mission fuels the brilliance of our AI assistant:
 # Clarification
 
 Completion Assistant from part A use a real FineTuning technique. This means that to update the model or use it with a new API_KEY you have to retrain the model which is sometimes long and is costly.
+
 Chat Completion Assistant from part B is a 'fake' trainned chatGPT clone. This means that I used hidden conversations with it to make it learn things. Then you don't have to train anything before using it, just replace your API_KEY and go with the flow! This is particularly usefull when you want something quickly and specific.
- 
+
 # A. Completion Assistant: The Code Surgeon :space_invader:
 
 ## Motivation
@@ -105,7 +106,7 @@ This folder holds the files that enable to run an software to use the completion
 - Write 10 examples Natural Language prompts of different temperature which illustrate exclusively each of the chosen protocols and parameters combinaisons.
 - All 10 examples must associate with the same completion code you write down.
 
-**For the completions Use the data in :folder: [general annotation](general_annotations)**
+**For the completions Use the data in :file_folder: [general annotation](general_annotations)**
 
 ### 2. Data augmentation
 
