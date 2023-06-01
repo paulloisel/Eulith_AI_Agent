@@ -1,0 +1,122 @@
+The protocols powered by Eulith share common general steps. 
+Those steps come in a standard format and should be adapted to each specific protocol.
+Here is a list of the diffreent steps. They must follow each other in the right order so that protocols are executed correctly.
+
+Step 1: Import Libraries consist in importing:
+- the os module to provide functions for interacting with the operating system
+- the sys module to access variables used or maintained by the interpreter
+- the Eulith packages (depending on the protocole you want to use and the operation you want to perform, different packages are necessary to access the required modules).
+
+Step 1 example START
+import os
+import sys
+
+from eulith_web3.eulith_web3 import *
+from eulith_web3.signing import construct_signing_middleware, LocalSigner
+Step 1 example END
+
+Step 2: Fill the Constructor:
+- choose an custody method to set up the adress of your wallet 
+- creates the Eulith Web3 object ("ew3") with the EulithWeb3() function to on carry the protocol.
+Step 2 example START
+if __name__ == '__main__':
+    print_banner()
+
+    wallet = LocalSigner("<PRIVATE_KEY>")
+    ew3 = EulithWeb3("https://eth-main.eulithrpc.com/v0", "<EULITH_REFRESH_TOKEN>", construct_signing_middleware(wallet))
+Step 2 example END
+
+Step 3: Define transaction and its amounts:
+- define what tokens are involved in the transaction (the list of the available tokens is here: https://docs.eulith.com/v/hgbRx2t48xMLL5xhyh04/client-libraries/python/tokens)
+- define each token amounts and the total amount of the transaction
+- define the wallet or the wallets receivers adresses.
+Step 3 example START
+    weth = ew3.eulith_get_erc_token(TokenSymbol.WETH)
+        t1_send_amount = 0.0001
+        t2_send_amount = 0.0001
+        amount = t1_send_amount + t2_send_amount
+        t1_wallet_address = '<WALLET_ADRESS>'
+        t2_wallet_address = '<WALLET_ADRESS>'
+Step 3 example END
+
+Step 4: Check wallet's funds availability:
+- create a if-statement and check that the total amount of the tranasctions is lower than the wallet balance with the method get_balance()
+- if the total amount exceed the wallet balance, then print a message error and exit(1) for unsuccessful termination.
+Step 4 example START
+    if ew3.eth.get_balance(wallet.address) / 1e18 < amount + 0.003:
+            print(f'insufficient balance, deposit at least {amount + 0.002} ETH to perform operation')
+            exit(1)
+Step 4 example END
+
+The Step 5,6, and 7 are optional for non-atomic transactions, but they are all required for atomic transaction.
+
+Step 5: Call and check funds availability in Eulith toolkit:
+- call the Eulith toolkit with the ensure_toolkit_contract() method, the method automatically checks if a toolkit already exist for this wallet
+- create a if-statement and check that the total amount of the tranasctions is lower than the toolkit balance with the balance_of_float() method
+- if the total amount exceed the toolkit balance, then wrap TokenSymbol from your wallet in a EulithERC20 format token with the deposit_eth() and send_transaction() methods and send it to the toolkit with the transfer_float() and send_transaction() methods.
+Step 5 example START
+    toolkit_address = ew3.v0.ensure_toolkit_contract(wallet.address)
+
+    if weth.balance_of_float(toolkit_address) < amount:
+        deposit_tx = weth.deposit_eth(amount, {'from': wallet.address, 'gas': 100000})
+        deposit_hash = ew3.eth.send_transaction(deposit_tx)
+        print(f'Converting ETH to WETH: {deposit_hash.hex()}')
+        ew3.eth.wait_for_transaction_receipt(deposit_hash)
+
+        transfer_to_toolkit_contract = weth.transfer_float(
+            toolkit_address, amount, {'from': wallet.address, 'gas': 100000})
+        transfer_hash = ew3.eth.send_transaction(transfer_to_toolkit_contract)
+        print(f'Sending enough WETH to the toolkit contract to cover the swap: {transfer_hash.hex()}')
+        ew3.eth.wait_for_transaction_receipt(transfer_hash)
+Step 5 example END
+
+Step 6: Open and append transactions to the atomic bundle
+- call the start_atomic_transaction() method to open the atomic bundle that is going to gather all the transactions you want to make
+- open a try-except-statement, include all the transactions you want to make in the try block with the send_transaction() method, in the except block, print a error message 'Error: Failed to execute transactions' and exit(1). 
+Step 6 example START
+    ew3.v0.start_atomic_transaction(wallet.address)
+
+    try:
+        ew3.eth.send_transaction({'from': wallet.address,
+                                  'to': t1_wallet_address,
+                                  'value': hex(int(t1_send_amount * 1e18))})
+        ew3.eth.send_transaction({'from': wallet.address,
+                                  'to': t2_wallet_address,
+                                  'value': hex(int(t2_send_amount * 1e18))})
+    except Exception as e:
+        print("Error: Failed to execute transactions:", str(e))
+        exit(1)
+Step 6 example END
+
+Step 7: Close bundle
+- open a try-except-statement, in the try block, call the commit_atomic_transaction() method to close the bundle, you won't be able to had new transactions in the atomic transaction after that, in the except block print a error message 'Failed to commit atomic transaction' and exit(1).
+Step 7 example START
+    try:
+        atomic_tx = ew3.v0.commit_atomic_transaction()
+    except Exception as e:
+        print("Error: Failed to commit atomic transaction:", str(e))
+        exit(1)
+Step 7 example END
+
+Step 8 and 9 are required for every protocols.
+
+Step 8: Perform transaction:
+- open a try-except-statement, in the try block, call the send_transaction() method with the commit object as an argument, also call the wait_for_transaction_receipt() method to get the receipt of the transaction, in the except block, print a error message 'Transaction not found in the chain after 120 seconds. Try the atomic transaction again.' and exit(1).
+Step 8 example START
+    try:
+        tx_hash = ew3.eth.send_transaction(atomic_tx)
+        receipt = ew3.eth.wait_for_transaction_receipt(tx_hash)
+        print(f"\nTransaction hash: {receipt['transactionHash'].hex()}")
+    except web3.exceptions.TimeExhausted:
+        print("Error: Transaction not found in the chain after 120 seconds. Try the atomic transaction again.")
+        exit(1)
+Step 8 example END
+
+Step 9: Empty remaining balance:
+- do not forget to withdraw the remaining founds from the toolkit wit the transfer_from_float() and send_transaction() methods.
+Step 9 example START
+    withdraw_weth_from_toolkit_tx = weth.transfer_from_float(
+        toolkit_address, wallet.address, amount, {'from': wallet.address, 'gas': 100000})
+    tx_hash = ew3.eth.send_transaction(withdraw_weth_from_toolkit_tx)
+    print(f'Withdraw tx: {tx_hash.hex()}')
+Step 9 example END
