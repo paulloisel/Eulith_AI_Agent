@@ -9,8 +9,8 @@ Our mission fuels the brilliance of our AI assistant:
 
 # Table of Contents
 
-- A. [Completion Assistant: The Code Surgeon](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#a-completion-assistant-space_invader) :space_invader:
-- B. [Chat Completion Assistant: Ananke, your personnal assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#b-chat-completion-assistant-robot) :robot:
+- A. [Completion Assistant: The Code Surgeon](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#a-completion-assistant-the-code-surgeon-space_invader) :space_invader:
+- B. [Chat Completion Assistant: Ananke, your personnal assistant](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#b-chat-completion-assistant-ananke-your-personnal-assistant-robot) :robot:
 - C. [Appendix](https://github.com/paulloisel/Eulith_AI_Agent/blob/main/Readme.md#c-appendix-question) :question:
 
 # A. Completion Assistant: The Code Surgeon :space_invader:
