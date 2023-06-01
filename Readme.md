@@ -66,7 +66,7 @@ This folder holds the files that enable to run an software to use the completion
 - Write 10 examples Natural Language prompts of different temperature which illustrate exclusively each of the chosen protocols and parameters combinaisons.
 - All 10 examples must associate with the same completion code you write down.
 
-** Use the data in :folder: [general annotation](general_annotations) for the completions
+**For the completions Use the data in :folder: [general annotation](general_annotations)**
 
 ### 2. Data augmentation
 
@@ -195,6 +195,17 @@ Arguments:
 
 # B. Chat_Completion Assistant :robot:
 
+## Motivation
+The Chat_completion assistant is called Ananke because it is a chatbot. So a name was needed
+Dialogue with them like you would do with chat GPT. It is the exact same thing exept that Ananke received some training on Eulith product.
+Unfortunately it is not the same technology than with the finetuning, this means that it is less accurate and knowledgeable about Eulith. However, it embodies perfectly what would be the result of the development of a real chatbot to support Eulith's users and teammates.
+
+### Qualities:
+- flexible annotation process 
+- Is aleady able to help the team providing examples to users
+
+### Defaults:
+- unsuffisant training
 
 ## Folder summary:
 

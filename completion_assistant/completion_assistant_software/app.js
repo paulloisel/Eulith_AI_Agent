@@ -19,9 +19,11 @@ async function getMessage() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            model: 'davinci',
+            model: 'davinci:ft-personal:completion-2-2023-06-01-17-50-26',
             prompt: inputElement.value,
-            temperature: 0.2
+            temperature: 0.5,
+            stop: " UGKYdT",
+            max_tokens: 2000
         })
     }
     try {
